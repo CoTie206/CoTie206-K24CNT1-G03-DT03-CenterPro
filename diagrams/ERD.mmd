@@ -1,0 +1,14 @@
+erDiagram
+  GIANGVIEN ||--o{ LOPHOC : phanCong
+  GIANGVIEN ||--o{ DEXUATLICHDAY : gui
+  LOPHOC ||--o{ DEXUATLICHDAY : thuocVe
+  LOPHOC ||--o{ LICHHOC : has
+  PHONGHOC ||--o{ LICHHOC : suDung
+  DEXUATLICHDAY o|--o| LICHHOC : xacNhan
+  GIANGVIEN o|--o| ASP_NET_USERS : lienKetTaiKhoan
+  GIANGVIEN { int MaGiangVien PK; string HoTen }
+  PHONGHOC { int MaPhongHoc PK; string TenPhongHoc }
+  LOPHOC { int MaLopHoc PK; string TenLopHoc; int MaGiangVien FK }
+  DEXUATLICHDAY { int MaDeXuatLich PK; int MaLopHoc FK; int MaGiangVien FK; datetime ThoiGianBatDauDeXuat; datetime ThoiGianKetThucDeXuat; string TrangThai }
+  LICHHOC { int MaLichHoc PK; int MaLopHoc FK; int MaPhongHoc FK; int MaDeXuatLich FK; datetime ThoiGianBatDau; datetime ThoiGianKetThuc }
+  ASP_NET_USERS { string Id PK; int MaGiangVien FK }
