@@ -1,0 +1,7 @@
+@model IEnumerable<PhongHoc>
+@{ ViewData["Title"] = "Quản lý phòng học"; }
+<div class="d-flex justify-content-between align-items-center mb-3"><div><h1 class="h2 mb-1">Phòng học</h1><p class="text-muted mb-0">Danh sách phòng học trong dữ liệu demo.</p></div><a asp-action="Create" class="btn btn-primary">Thêm phòng</a></div>
+<div class="card"><div class="table-responsive"><table class="table table-hover align-middle mb-0"><thead class="table-light"><tr><th>Mã</th><th>Tên phòng</th><th class="text-end">Thao tác</th></tr></thead><tbody>
+@foreach (var item in Model) { <tr><td>@item.MaPhongHoc</td><td>@item.TenPhongHoc</td><td class="text-end"><a asp-action="Edit" asp-route-id="@item.MaPhongHoc" class="btn btn-sm btn-outline-primary">Sửa</a> <a asp-action="Delete" asp-route-id="@item.MaPhongHoc" class="btn btn-sm btn-outline-danger">Xóa</a></td></tr> }
+@if (!Model.Any()) { <tr><td colspan="3" class="text-center text-muted py-4">Chưa có phòng học.</td></tr> }
+</tbody></table></div></div>

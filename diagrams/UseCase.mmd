@@ -1,0 +1,17 @@
+flowchart LR
+  Lecturer[Giảng viên] --> UC1((Gửi đề xuất lịch dạy))
+  Lecturer --> UC2((Theo dõi trạng thái đề xuất))
+  Lecturer --> UC3((Xem lịch cá nhân))
+  Staff[Nhân viên đào tạo] --> UC4((Quản lý giảng viên))
+  Staff --> UC5((Quản lý phòng học))
+  Staff --> UC6((Quản lý lớp học))
+  Staff --> UC7((Tiếp nhận đề xuất))
+  Staff --> UC8((Tạo hoặc cập nhật lịch))
+  Staff --> UC9((Xác nhận lịch chính thức))
+  Staff --> UC10((Kiểm tra xung đột))
+  Admin[Quản trị viên] --> UC11((Quản lý tài khoản))
+  Admin --> UC12((Phân quyền))
+  Admin --> UC4
+  Admin --> UC5
+  Admin --> UC6
+  React[React quản trị] --> API((API danh sách lớp và lịch))
