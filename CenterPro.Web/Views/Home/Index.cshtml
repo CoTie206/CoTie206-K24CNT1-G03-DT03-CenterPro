@@ -1,0 +1,15 @@
+@{ ViewData["Title"] = "Tổng quan"; }
+<div class="mb-4">
+    <p class="text-uppercase small fw-semibold text-primary mb-1">Hệ thống quản lý trung tâm đào tạo CNTT</p>
+    <h1 class="h2 mb-1">Tổng quan CenterPro</h1>
+    <p class="text-muted">Các phân hệ quản lý nền tảng · Dữ liệu mẫu cho giai đoạn phát triển.</p>
+</div>
+@if (ViewBag.CanManage == true)
+{
+<div class="row g-3 mb-4">
+    <div class="col-md-4"><div class="card cp-stat h-100"><div class="card-body"><div class="text-muted">Giảng viên</div><div class="display-6 fw-semibold">@ViewBag.GiangVienCount</div><a asp-controller="GiangVien" asp-action="Index" class="small">Mở danh sách</a></div></div></div>
+    <div class="col-md-4"><div class="card cp-stat h-100"><div class="card-body"><div class="text-muted">Phòng học</div><div class="display-6 fw-semibold">@ViewBag.PhongHocCount</div><a asp-controller="PhongHoc" asp-action="Index" class="small">Mở danh sách</a></div></div></div>
+    <div class="col-md-4"><div class="card cp-stat h-100"><div class="card-body"><div class="text-muted">Lớp học</div><div class="display-6 fw-semibold">@ViewBag.ClassCount</div><a asp-controller="LopHoc" asp-action="Index" class="small">Mở danh sách</a></div></div></div>
+</div>
+}
+<section class="card"><div class="card-body"><h2 class="h5">Tuần 3 · Phân hệ nền tảng</h2><p class="mb-0">Đăng nhập, phân quyền theo vai trò và thao tác dữ liệu giảng viên, phòng học, lớp học. Các chức năng đề xuất/xác nhận lịch và màn hình React thuộc các mốc sau của kế hoạch.</p></div></section>

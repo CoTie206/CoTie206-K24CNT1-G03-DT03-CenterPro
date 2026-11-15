@@ -1,0 +1,26 @@
+{
+  "profiles": {
+    "CenterPro.Web": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "applicationUrl": "http://127.0.0.1:5080",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://127.0.0.1:5080",
+
+        "BootstrapUsers__0__Email": "admin@centerpro.local",
+        "BootstrapUsers__0__Password": "CenterPro@2026",
+        "BootstrapUsers__0__Role": "Administrator",
+
+        "BootstrapUsers__1__Email": "lecturer1@centerpro.local",
+        "BootstrapUsers__1__Password": "Lecturer@12345",
+        "BootstrapUsers__1__Role": "Lecturer",
+        "BootstrapUsers__1__MaGiangVien": "1",
+
+        "BootstrapUsers__2__Email": "staff@centerpro.local",
+        "BootstrapUsers__2__Password": "Staff@12345",
+        "BootstrapUsers__2__Role": "TrainingStaff"
+      }
+    }
+  }
+}
