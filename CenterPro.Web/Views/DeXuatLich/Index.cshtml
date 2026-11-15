@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DeXuatLichDay>
+@{
+    ViewData["Title"] = "Đề xuất lịch dạy của tôi";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="h2 mb-1">Đề xuất lịch dạy</h1>
+        <p class="text-muted mb-0">Danh sách đề xuất bạn đã gửi và trạng thái xử lý.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">Gửi đề xuất mới</a>
+</div>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Mã</th>
+                    <th>Lớp học</th>
+                    <th>Thời gian đề xuất</th>
+                    <th>Ngày gửi</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MaDeXuatLich</td>
+                        <td>@item.LopHoc.TenLopHoc</td>
+                        <td>
+                            @item.ThoiGianBatDauDeXuat.ToString("dd/MM/yyyy HH:mm")
+                            –
+                            @item.ThoiGianKetThucDeXuat.ToString("HH:mm")
+                        </td>
+                        <td>@item.ThoiGianGui.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            @if (item.TrangThai == "Pending")
+                            {
+                                <span class="badge text-bg-warning">Chờ xử lý</span>
+                            }
+                            else if (item.TrangThai == "Approved")
+                            {
+                                <span class="badge text-bg-success">Đã duyệt</span>
+                            }
+                            else if (item.TrangThai == "Rejected")
+                            {
+                                <span class="badge text-bg-danger">Từ chối</span>
+                            }
+                            else
+                            {
+                                <span class="badge text-bg-secondary">@item.TrangThai</span>
+                            }
+                        </td>
+                    </tr>
+                }
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">Bạn chưa có đề xuất nào.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
