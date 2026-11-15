@@ -1,0 +1,7 @@
+:root { --cp-navy: #1f3a5f; --cp-blue: #2f6fed; --cp-bg: #f4f7fb; }
+body { background: var(--cp-bg); color: #1f2937; }
+.cp-nav { background: var(--cp-navy); }
+.cp-stat { border: 0; box-shadow: 0 2px 12px rgba(31, 58, 95, .08); }
+.table thead th { white-space: nowrap; }
+.validation-summary-errors ul { margin-bottom: 0; }
+footer { margin-top: 2rem; }
