@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CenterPro.Data.Domain.DeXuatLichDay>
+@{
+    ViewData["Title"] = "Xử lý đề xuất lịch";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="h4 mb-0">Danh sách đề xuất lịch dạy</h2>
+    <div class="btn-group">
+        <a class="btn btn-sm @(ViewBag.TrangThaiHienTai == null ? "btn-primary" : "btn-outline-primary")"
+           asp-action="Index">Tất cả</a>
+        <a class="btn btn-sm @(ViewBag.TrangThaiHienTai == "Pending" ? "btn-warning" : "btn-outline-warning")"
+           asp-action="Index" asp-route-trangThai="Pending">Chờ duyệt</a>
+        <a class="btn btn-sm @(ViewBag.TrangThaiHienTai == "Approved" ? "btn-success" : "btn-outline-success")"
+           asp-action="Index" asp-route-trangThai="Approved">Đã duyệt</a>
+        <a class="btn btn-sm @(ViewBag.TrangThaiHienTai == "Rejected" ? "btn-danger" : "btn-outline-danger")"
+           asp-action="Index" asp-route-trangThai="Rejected">Từ chối</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>Lớp học</th>
+                <th>Giảng viên</th>
+                <th>Thời gian đề xuất</th>
+                <th>Ngày gửi</th>
+                <th>Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaDeXuatLich</td>
+                    <td>@item.LopHoc.TenLopHoc</td>
+                    <td>@item.GiangVien.HoTen</td>
+                    <td>
+                        @item.ThoiGianBatDauDeXuat.ToString("dd/MM/yyyy HH:mm")
+                        → @item.ThoiGianKetThucDeXuat.ToString("HH:mm")
+                    </td>
+                    <td>@item.ThoiGianGui.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>
+                        @switch (item.TrangThai)
+                        {
+                            case "Pending":
+                                <span class="badge bg-warning text-dark">Chờ duyệt</span>
+                                break;
+                            case "Approved":
+                                <span class="badge bg-success">Đã duyệt</span>
+                                break;
+                            case "Rejected":
+                                <span class="badge bg-danger">Từ chối</span>
+                                break;
+                        }
+                    </td>
+                    <td class="text-end">
+                        @if (item.TrangThai == "Pending")
+                        {
+                            <a class="btn btn-sm btn-primary" asp-action="XuLy" asp-route-id="@item.MaDeXuatLich">
+                                Xử lý
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
