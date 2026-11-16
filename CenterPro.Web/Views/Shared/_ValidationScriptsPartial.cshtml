@@ -1,0 +1,9 @@
+<script>
+    (function () {
+        const form = document.querySelector('form');
+        if (!form) return;
+        form.querySelectorAll('[required]').forEach(input => input.addEventListener('invalid', function () {
+            this.classList.add('is-invalid');
+        }));
+    })();
+</script>

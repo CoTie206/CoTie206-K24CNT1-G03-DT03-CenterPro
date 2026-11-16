@@ -1,0 +1,14 @@
+classDiagram
+  class GiangVien { +int MaGiangVien; +string HoTen }
+  class PhongHoc { +int MaPhongHoc; +string TenPhongHoc }
+  class LopHoc { +int MaLopHoc; +string TenLopHoc; +int MaGiangVien }
+  class DeXuatLichDay { +int MaDeXuatLich; +int MaLopHoc; +int MaGiangVien; +DateTime ThoiGianBatDauDeXuat; +DateTime ThoiGianKetThucDeXuat; +string TrangThai }
+  class LichHoc { +int MaLichHoc; +int MaLopHoc; +int MaPhongHoc; +int? MaDeXuatLich; +DateTime ThoiGianBatDau; +DateTime ThoiGianKetThuc }
+  class NguoiDungUngDung { +string Id; +int? MaGiangVien }
+  GiangVien "1" --> "0..*" LopHoc : day
+  LopHoc "1" --> "0..*" DeXuatLichDay : has
+  GiangVien "1" --> "0..*" DeXuatLichDay : gui
+  LopHoc "1" --> "0..*" LichHoc : xepLich
+  PhongHoc "1" --> "0..*" LichHoc : suDung
+  DeXuatLichDay "0..1" --> "0..1" LichHoc : xacNhan
+  GiangVien "0..1" --> "0..1" NguoiDungUngDung : taiKhoan

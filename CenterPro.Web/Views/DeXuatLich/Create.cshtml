@@ -1,0 +1,41 @@
+﻿@model NhapDeXuatLichModel
+@{
+    ViewData["Title"] = "Gửi đề xuất lịch dạy";
+}
+
+<h1 class="h2 mb-3">Gửi đề xuất lịch dạy</h1>
+
+<div class="card cp-form">
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="MaLopHoc" class="form-label"></label>
+                <select asp-for="MaLopHoc" asp-items="ViewBag.LopHoc" class="form-select">
+                    <option value="0">-- Chọn lớp học --</option>
+                </select>
+                <span asp-validation-for="MaLopHoc" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ThoiGianBatDauDeXuat" class="form-label"></label>
+                <input asp-for="ThoiGianBatDauDeXuat" type="datetime-local" class="form-control" />
+                <span asp-validation-for="ThoiGianBatDauDeXuat" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ThoiGianKetThucDeXuat" class="form-label"></label>
+                <input asp-for="ThoiGianKetThucDeXuat" type="datetime-local" class="form-control" />
+                <span asp-validation-for="ThoiGianKetThucDeXuat" class="text-danger"></span>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Gửi đề xuất</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Hủy</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

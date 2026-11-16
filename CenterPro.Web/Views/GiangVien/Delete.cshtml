@@ -1,0 +1,3 @@
+@model GiangVien
+@{ ViewData["Title"] = "Xóa giảng viên"; }
+<div class="card border-danger cp-form"><div class="card-body"><h1 class="h3">Xóa giảng viên?</h1><p>Bạn có chắc muốn xóa <strong>@Model.HoTen</strong> không?</p><p class="text-muted">Giảng viên đang được lớp học tham chiếu sẽ không thể xóa.</p><form asp-action="Delete" asp-route-id="@Model.MaGiangVien" method="post"><button class="btn btn-danger" type="submit">Xác nhận xóa</button> <a asp-action="Index" class="btn btn-outline-secondary">Quay lại</a></form></div></div>
