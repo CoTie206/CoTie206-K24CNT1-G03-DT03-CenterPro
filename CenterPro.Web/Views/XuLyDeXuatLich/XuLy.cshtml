@@ -1,58 +1,117 @@
 ﻿@model CenterPro.Data.Domain.DeXuatLichDay
+@using Microsoft.AspNetCore.Mvc.Rendering
+
 @{
     ViewData["Title"] = "Xử lý đề xuất";
+
+    var giangVienBiTrung = ViewBag.GiangVienBiTrung is bool value && value;
+    var danhSachPhong = ViewBag.PhongHoc as SelectList;
+    var coPhongTrong = danhSachPhong != null && danhSachPhong.Any();
 }
 
 <div class="row justify-content-center">
     <div class="col-lg-8">
         <div class="card shadow-sm">
             <div class="card-header bg-primary text-white">
-                <h5 class="mb-0">Xử lý đề xuất lịch dạy #@Model.MaDeXuatLich</h5>
+                <h5 class="mb-0">
+                    Xử lý đề xuất lịch dạy #@Model.MaDeXuatLich
+                </h5>
             </div>
+
             <div class="card-body">
                 <dl class="row mb-4">
                     <dt class="col-sm-4">Lớp học</dt>
-                    <dd class="col-sm-8">@Model.LopHoc.TenLopHoc</dd>
+                    <dd class="col-sm-8">
+                        @Model.LopHoc.TenLopHoc
+                    </dd>
 
                     <dt class="col-sm-4">Giảng viên</dt>
-                    <dd class="col-sm-8">@Model.GiangVien.HoTen</dd>
+                    <dd class="col-sm-8">
+                        @Model.GiangVien.HoTen
+                    </dd>
 
                     <dt class="col-sm-4">Thời gian đề xuất</dt>
                     <dd class="col-sm-8">
                         @Model.ThoiGianBatDauDeXuat.ToString("dd/MM/yyyy HH:mm")
-                        → @Model.ThoiGianKetThucDeXuat.ToString("HH:mm")
+                        →
+                        @Model.ThoiGianKetThucDeXuat.ToString("HH:mm")
                     </dd>
 
                     <dt class="col-sm-4">Ngày gửi</dt>
-                    <dd class="col-sm-8">@Model.ThoiGianGui.ToString("dd/MM/yyyy HH:mm")</dd>
+                    <dd class="col-sm-8">
+                        @Model.ThoiGianGui.ToString("dd/MM/yyyy HH:mm")
+                    </dd>
                 </dl>
 
                 <hr />
 
-                <!-- Form xác nhận -->
-                <form asp-action="XacNhan" method="post" class="mb-3">
-                    <input type="hidden" name="id" value="@Model.MaDeXuatLich" />
-                    <div class="mb-3">
-                        <label class="form-label fw-semibold">Chọn phòng học</label>
-                        <select name="maPhongHoc" class="form-select" required>
-                            <option value="">-- Chọn phòng trống --</option>
-                            @foreach (var item in (SelectList)ViewBag.PhongHoc)
-                            {
-                                <option value="@item.Value">@item.Text</option>
-                            }
-                        </select>
-                        <div class="form-text">Chỉ hiển thị các phòng còn trống trong khung giờ này.</div>
+                @if (giangVienBiTrung)
+                {
+                    <div class="alert alert-danger">
+                        Giảng viên đã có lịch dạy trong khung giờ này.
+                        Không thể xác nhận đề xuất.
                     </div>
-                    <button type="submit" class="btn btn-success">
-                        Xác nhận & Tạo lịch
-                    </button>
-                </form>
+                }
+                else if (!coPhongTrong)
+                {
+                    <div class="alert alert-warning">
+                        Hiện không có phòng học trống trong khung giờ này.
+                    </div>
+                }
+                else
+                {
+                    <form asp-action="XacNhan" method="post" class="mb-3">
+                        <input type="hidden"
+                               name="id"
+                               value="@Model.MaDeXuatLich" />
 
-                <!-- Form từ chối -->
-                <form asp-action="TuChoi" method="post" onsubmit="return confirm('Bạn chắc chắn muốn từ chối đề xuất này?');">
-                    <input type="hidden" name="id" value="@Model.MaDeXuatLich" />
-                    <button type="submit" class="btn btn-outline-danger">Từ chối đề xuất</button>
-                    <a asp-action="Index" class="btn btn-outline-secondary ms-2">Quay lại</a>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Chọn phòng học
+                            </label>
+
+                            <select name="maPhongHoc"
+                                    class="form-select"
+                                    required>
+                                <option value="">
+                                    -- Chọn phòng trống --
+                                </option>
+
+                                @foreach (var item in danhSachPhong!)
+                                {
+                                    <option value="@item.Value">
+                                        @item.Text
+                                    </option>
+                                }
+                            </select>
+
+                            <div class="form-text">
+                                Danh sách chỉ gồm các phòng không bị trùng lịch.
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">
+                            Xác nhận và tạo lịch
+                        </button>
+                    </form>
+                }
+
+                <form asp-action="TuChoi"
+                      method="post"
+                      onsubmit="return confirm('Bạn chắc chắn muốn từ chối đề xuất này?');">
+
+                    <input type="hidden"
+                           name="id"
+                           value="@Model.MaDeXuatLich" />
+
+                    <button type="submit" class="btn btn-outline-danger">
+                        Từ chối đề xuất
+                    </button>
+
+                    <a asp-action="Index"
+                       class="btn btn-outline-secondary ms-2">
+                        Quay lại
+                    </a>
                 </form>
             </div>
         </div>
