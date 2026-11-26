@@ -1,0 +1,9 @@
+@{ ViewData["Title"] = "Lịch React"; }
+@section Styles { <link rel="stylesheet" href="~/react/centerpro.css" asp-append-version="true" /> }
+<div class="mb-4">
+    <p class="text-uppercase small fw-semibold text-primary mb-1">QUẢN LÝ ĐÀO TẠO</p>
+    <h1 class="h2 mb-1">Lịch lớp học</h1>
+    <p class="text-muted">Lịch giảng dạy và danh sách lớp được tải từ API CenterPro.</p>
+</div>
+<div id="centerpro-react-root" data-classes-api="/api/lophoc" data-schedules-api="/api/lichhoc" aria-live="polite"></div>
+@section Scripts { <script type="module" src="~/react/centerpro.js" asp-append-version="true"></script> }
