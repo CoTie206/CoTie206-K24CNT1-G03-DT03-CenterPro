@@ -38,7 +38,9 @@ Hệ thống giúp đơn giản hóa quá trình quản lý và sắp xếp lị
 | Vai trò | Email | Mật khẩu |
 |---|---|---|
 | Administrator | admin@centerpro.local | CenterPro@2026 |
-| Lecturer | lecturer1@centerpro.local | Lecturer@12345 |
+| Lecturer – Hoàng Công Tiến | lecturer1@centerpro.local | Lecturer@12345 |
+| Lecturer – Vũ Hoàng Anh | hoanganh@centerpro.local | Lecturer@12345 |
+| Lecturer – Nghiêm Văn Trọng | trong@centerpro.local | Lecturer@12345 |
 | Training Staff | staff@centerpro.local | Staff@12345 |
 
 Lưu ý: Đây là các tài khoản demo phục vụ học tập, kiểm thử và trải nghiệm hệ thống.

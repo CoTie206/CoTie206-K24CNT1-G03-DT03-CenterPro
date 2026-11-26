@@ -237,9 +237,9 @@ BEGIN
     IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'MaGiangVien', N'HoTen') AND [object_id] = OBJECT_ID(N'[GiangVien]'))
         SET IDENTITY_INSERT [GiangVien] ON;
     EXEC(N'INSERT INTO [GiangVien] ([MaGiangVien], [HoTen])
-    VALUES (1, N''Nguyễn Minh An''),
-    (2, N''Trần Thu Hà''),
-    (3, N''Lê Quốc Bình'')');
+    VALUES (1, N''Hoàng Công Tiến''),
+    (2, N''Vũ Hoàng Anh''),
+    (3, N''Nghiêm Văn Trọng'')');
     IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'MaGiangVien', N'HoTen') AND [object_id] = OBJECT_ID(N'[GiangVien]'))
         SET IDENTITY_INSERT [GiangVien] OFF;
 END;
@@ -438,3 +438,16 @@ SELECT
 FROM INFORMATION_SCHEMA.TABLES
 WHERE TABLE_TYPE = 'BASE TABLE'
 ORDER BY TABLE_NAME;
+
+-- Đồng bộ tên giảng viên mẫu khi chạy script trên CSDL đã tồn tại.
+IF NOT EXISTS (SELECT 1 FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20261126000000_DoiTenGiangVienTheoThanhVien')
+BEGIN
+    BEGIN TRANSACTION;
+    UPDATE [dbo].[GiangVien] SET [HoTen] = N'Hoàng Công Tiến' WHERE [MaGiangVien] = 1;
+    UPDATE [dbo].[GiangVien] SET [HoTen] = N'Vũ Hoàng Anh' WHERE [MaGiangVien] = 2;
+    UPDATE [dbo].[GiangVien] SET [HoTen] = N'Nghiêm Văn Trọng' WHERE [MaGiangVien] = 3;
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20261126000000_DoiTenGiangVienTheoThanhVien', N'10.0.14');
+    COMMIT;
+END;
+GO

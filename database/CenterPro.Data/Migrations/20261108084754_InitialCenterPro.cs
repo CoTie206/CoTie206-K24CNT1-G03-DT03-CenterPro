@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -293,9 +293,9 @@ namespace CenterPro.Data.Migrations
                 columns: new[] { "InstructorId", "FullName" },
                 values: new object[,]
                 {
-                    { 1, "Nguyễn Minh An" },
-                    { 2, "Trần Thu Hà" },
-                    { 3, "Lê Quốc Bình" }
+                    { 1, "Hoàng Công Tiến" },
+                    { 2, "Vũ Hoàng Anh" },
+                    { 3, "Nghiêm Văn Trọng" }
                 });
 
             migrationBuilder.InsertData(

@@ -87,9 +87,9 @@ public sealed class CenterProDbContext(DbContextOptions<CenterProDbContext> opti
     private static void Seed(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<GiangVien>().HasData(
-            new GiangVien { MaGiangVien = 1, HoTen = "Nguyễn Minh An" },
-            new GiangVien { MaGiangVien = 2, HoTen = "Trần Thu Hà" },
-            new GiangVien { MaGiangVien = 3, HoTen = "Lê Quốc Bình" });
+            new GiangVien { MaGiangVien = 1, HoTen = "Hoàng Công Tiến" },
+            new GiangVien { MaGiangVien = 2, HoTen = "Vũ Hoàng Anh" },
+            new GiangVien { MaGiangVien = 3, HoTen = "Nghiêm Văn Trọng" });
 
         modelBuilder.Entity<PhongHoc>().HasData(
             new PhongHoc { MaPhongHoc = 1, TenPhongHoc = "Phòng A" },

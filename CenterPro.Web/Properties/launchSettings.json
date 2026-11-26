@@ -17,9 +17,19 @@
         "BootstrapUsers__1__Role": "Lecturer",
         "BootstrapUsers__1__MaGiangVien": "1",
 
-        "BootstrapUsers__2__Email": "staff@centerpro.local",
-        "BootstrapUsers__2__Password": "Staff@12345",
-        "BootstrapUsers__2__Role": "TrainingStaff"
+        "BootstrapUsers__2__Email": "hoanganh@centerpro.local",
+        "BootstrapUsers__2__Password": "Lecturer@12345",
+        "BootstrapUsers__2__Role": "Lecturer",
+        "BootstrapUsers__2__MaGiangVien": "2",
+
+        "BootstrapUsers__3__Email": "trong@centerpro.local",
+        "BootstrapUsers__3__Password": "Lecturer@12345",
+        "BootstrapUsers__3__Role": "Lecturer",
+        "BootstrapUsers__3__MaGiangVien": "3",
+
+        "BootstrapUsers__4__Email": "staff@centerpro.local",
+        "BootstrapUsers__4__Password": "Staff@12345",
+        "BootstrapUsers__4__Role": "TrainingStaff"
       }
     }
   }
